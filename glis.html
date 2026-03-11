@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Greenland International School</title>
+    <link rel="stylesheet" href="style.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<style>
+/* =========================================
+   GLOBAL VARIABLES & RESET
+   ========================================= */
+:root {
+    /* School Theme Colors */
+    --primary-color: #0b5e36; /* Deep Forest Green */
+    --secondary-color: #e67e22; /* Vibrant Orange/Gold */
+    --text-color: #333333;
+    --text-light: #666666;
+    --bg-light: #f4f7f6;
+    --white: #ffffff;
+    
+    /* Design System */
+    --transition: all 0.3s ease-in-out;
+    --shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    --shadow-hover: 0 15px 30px rgba(0, 0, 0, 0.15);
+    --border-radius: 12px;
+}
+
+html {
+    scroll-behavior: smooth; /* Enables smooth scrolling for nav links */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    color: var(--text-color);
+    line-height: 1.6;
+    background-color: var(--white);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+/* =========================================
+   HEADER & NAVIGATION
+   ========================================= */
+header {
+    background-color: var(--white);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5%;
+    height: 90px;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-img {
+    width:50px;
+}
+
+.logo-text h1 {
+    font-size: 18px;
+    color: #0a7d3c;
+}
+
+.logo-text p {
+    font-size: 0.85rem;
+    color: var(--secondary-color);
+    font-style: italic;
+    font-weight: 600;
+}
+
+nav ul {
+    display: flex;
+    gap: 25px;
+}
+
+nav ul li a {
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 10px 0;
+    position: relative;
+    color: var(--text-color);
+    transition: var(--transition);
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 3px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--secondary-color);
+    transition: var(--transition);
+    border-radius: 2px;
+}
+
+nav ul li a:hover {
+    color: var(--primary-color);
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+}
+
+/* Pure CSS Mobile Menu Checkbox Hack */
+#menu-toggle {
+    display: none;
+}
+
+.hamburger {
+    display: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: var(--primary-color);
+}
+
+/* =========================================
+   REUSABLE UTILITIES
+   ========================================= */
+.section {
+    padding: 90px 5%;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.2rem;
+    margin-bottom: 50px;
+    color: var(--primary-color);
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 70px;
+    height: 4px;
+    background-color: var(--secondary-color);
+    margin: 15px auto 0;
+    border-radius: 2px;
+}
+
+.title-white::after {
+    background-color: var(--white);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.bg-light { background-color: var(--bg-light); }
+.text-center { text-align: center; }
+.text-white { color: var(--white) !important; }
+
+/* Gradient Background */
+.bg-gradient {
+    background: linear-gradient(135deg, var(--primary-color) 0%, #064024 100%);
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 14px 35px;
+    background-color: var(--secondary-color);
+    color: var(--white);
+    border-radius: 30px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: var(--transition);
+    border: 2px solid var(--secondary-color);
+    box-shadow: var(--shadow);
+}
+
+.btn:hover {
+    background-color: transparent;
+    color: var(--secondary-color);
+    transform: translateY(-3px);
+}
+
+.btn-light {
+    background-color: var(--white);
+    color: var(--primary-color);
+    border-color: var(--white);
+}
+
+.btn-light:hover {
+    background-color: transparent;
+    color: var(--white);
+}
+
+/* =========================================
+   HERO SECTION
+   ========================================= */
+.hero {
+    height: calc(100vh - 90px);
+    background-image: url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    position: relative;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(to right, rgba(11, 94, 54, 0.85), rgba(0, 0, 0, 0.5));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.hero-content {
+    color: var(--white);
+    max-width: 900px;
+    padding: 0 20px;
+    animation: fadeIn 1.5s ease;
+}
+
+.hero-content h2 {
+    font-size: 3.8rem;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
+}
+
+.hero-content p {
+    font-size: 1.3rem;
+    margin-bottom: 40px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* =========================================
+   ABOUT SECTION
+   ========================================= */
+.about-content {
+    display: flex;
+    gap: 60px;
+    align-items: center;
+}
+
+.about-image {
+    flex: 1;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+}
+
+.about-image img {
+    width: 100%;
+    display: block;
+    transition: transform 0.6s ease;
+}
+
+.about-image:hover img {
+    transform: scale(1.05);
+}
+
+.about-text {
+    flex: 1;
+}
+
+.about-text p {
+    font-size: 1.15rem;
+    color: var(--text-light);
+    line-height: 1.8;
+}
+
+/* =========================================
+   CARDS (Management & Curriculum)
+   ========================================= */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 30px;
+}
+
+.card {
+    background-color: var(--white);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-hover);
+}
+
+/* Management Specific */
+.management-card {
+    text-align: center;
+}
+
+.management-card img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    border-bottom: 4px solid var(--secondary-color);
+}
+
+.card-content {
+    padding: 25px 20px;
+}
+
+.management-card h3 {
+    font-size: 1.3rem;
+    color: var(--primary-color);
+    margin-bottom: 5px;
+}
+
+.management-card p {
+    color: var(--secondary-color);
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+/* Curriculum Specific */
+.feature-card {
+    padding: 40px 30px;
+    text-align: center;
+    border-bottom: 4px solid transparent;
+}
+
+.feature-card:hover {
+    border-bottom: 4px solid var(--secondary-color);
+}
+
+.feature-card i {
+    font-size: 3.5rem;
+    color: var(--secondary-color);
+    margin-bottom: 25px;
+    transition: var(--transition);
+}
+
+.feature-card:hover i {
+    transform: scale(1.1);
+    color: var(--primary-color);
+}
+
+.feature-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    font-size: 1.4rem;
+}
+
+.feature-card p {
+    color: var(--text-light);
+    font-size: 0.95rem;
+}
+
+/* =========================================
+   ADMISSION SECTION
+   ========================================= */
+.admission p {
+    font-size: 1.25rem;
+    margin-bottom: 40px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.8;
+}
+
+/* =========================================
+   GALLERY SECTION
+   ========================================= */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 20px;
+}
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--border-radius);
+    height: 280px;
+    box-shadow: var(--shadow);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.gallery-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(11, 94, 54, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.gallery-overlay span {
+    color: var(--white);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 1.3rem;
+    transform: translateY(20px);
+    transition: var(--transition);
+}
+
+.gallery-item:hover img {
+    transform: scale(1.1);
+}
+
+.gallery-item:hover .gallery-overlay {
+    opacity: 1;
+}
+
+.gallery-item:hover .gallery-overlay span {
+    transform: translateY(0);
+}
+
+/* =========================================
+   CONTACT SECTION
+   ========================================= */
+.contact-wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.contact-info {
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.contact-item i {
+    font-size: 1.8rem;
+    color: var(--secondary-color);
+    background: var(--bg-light);
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: var(--transition);
+}
+
+.contact-item:hover i {
+    background: var(--primary-color);
+    color: var(--white);
+}
+
+.contact-item h4 {
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+
+.contact-item p {
+    color: var(--text-light);
+    font-size: 1.05rem;
+}
+
+/* =========================================
+   FOOTER
+   ========================================= */
+.footer {
+    background-color: #1a1a1a;
+    color: var(--white);
+    padding: 70px 5% 20px;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 50px;
+    margin-bottom: 50px;
+}
+
+.footer-logo {
+    font-size: 1.4rem;
+    font-weight: 800;
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 10px;
+    color: var(--white);
+}
+
+.footer-logo i {
+    color: var(--secondary-color);
+}
+
+.brand-col p {
+    color: #aaaaaa;
+    margin-top: 15px;
+    font-size: 0.95rem;
+}
+
+.footer-col h4 {
+    font-size: 1.2rem;
+    margin-bottom: 25px;
+    position: relative;
+    padding-bottom: 10px;
+    color: var(--white);
+}
+
+.footer-col h4::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 50px;
+    height: 3px;
+    background-color: var(--secondary-color);
+    border-radius: 2px;
+}
+
+.footer-col ul li {
+    margin-bottom: 12px;
+}
+
+.footer-col ul li a {
+    color: #aaaaaa;
+    transition: var(--transition);
+    display: inline-block;
+}
+
+.footer-col ul li a:hover {
+    color: var(--secondary-color);
+    transform: translateX(5px);
+}
+
+.social-icons a {
+    display: inline-block;
+    width: 45px;
+    height: 45px;
+    background: #333333;
+    color: var(--white);
+    text-align: center;
+    line-height: 45px;
+    border-radius: 50%;
+    margin-right: 12px;
+    transition: var(--transition);
+    font-size: 1.1rem;
+}
+
+.social-icons a:hover {
+    background: var(--secondary-color);
+    transform: translateY(-3px);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 25px;
+    border-top: 1px solid #333333;
+    color: #777777;
+    font-size: 0.95rem;
+}
+
+/* =========================================
+   RESPONSIVE DESIGN (Media Queries)
+   ========================================= */
+@media (max-width: 1024px) {
+    .about-content {
+        flex-direction: column;
+    }
+    .hero-content h2 {
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Mobile Header & Hamburger */
+    .hamburger { 
+        display: block; 
+    }
+    
+    nav {
+        position: absolute;
+        top: 90px;
+        left: 0;
+        width: 100%;
+        background-color: var(--white);
+        box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+        transform: scaleY(0);
+        transform-origin: top;
+        transition: transform 0.3s ease-in-out;
+    }
+    
+    nav ul {
+        flex-direction: column;
+        padding: 30px 20px;
+        gap: 20px;
+        text-align: center;
+    }
+    
+    #menu-toggle:checked ~ nav {
+        transform: scaleY(1);
+    }
+    
+    .logo-text h1 {
+        font-size: 1rem;
+    }
+    
+    .hero-content h2 { 
+        font-size: 2.2rem; 
+    }
+    
+    .section-title { 
+        font-size: 1.8rem; 
+    }
+    
+    .contact-item {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+}
+
+/* Admission Popup */
+
+.popup{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.7);
+display:flex;
+justify-content:center;
+align-items:center;
+z-index:9999;
+}
+
+.popup-content{
+position:relative;
+background:white;
+padding:10px;
+border-radius:10px;
+max-width:400px;
+}
+
+.popup-content img{
+width:100%;
+border-radius:10px;
+}
+
+.close-btn{
+position:absolute;
+top:10px;
+right:10px;
+z-index:10001;
+background:red;
+color:white;
+font-size:25px;
+width:35px;
+height:35px;
+text-align:center;
+line-height:35px;
+border-radius:50%;
+cursor:pointer;
+}
+/* Admission Section Fix */
+
+.admission h2{
+color:white;
+font-size:40px;
+font-weight:700;
+text-align:center;
+margin-bottom:20px;
+text-shadow:2px 2px 8px rgba(0,0,0,0.5);
+}
+
+.admission p{
+color:white;
+font-size:18px;
+max-width:700px;
+margin:auto;
+text-align:center;
+}
+.logo-container{
+display:flex;
+align-items:center;
+gap:10px;
+}
+
+.logo-img{
+width:70px;
+height:auto;
+}
+.message-box{
+display:flex;
+align-items:center;
+gap:40px;
+margin:50px 0;
+}
+
+.message-box.reverse{
+flex-direction:row-reverse;
+}
+
+.message-box img{
+width:250px;
+border-radius:10px;
+}
+
+.text{
+max-width:600px;
+}
+.message-box{
+display:flex;
+align-items:flex-start;
+gap:40px;
+margin:60px 0;
+}
+
+.message-box img{
+width:220px;
+border-radius:10px;
+}
+
+.message-box .text{
+max-width:700px;
+}
+
+.message-box .text h3{
+margin-bottom:5px;
+color:#0a7d3c;
+}
+
+.message-box .text p{
+line-height:1.7;
+}
+
+</style>
+
+<body>
+<script>
+
+function closePopup(){
+document.getElementById("adPopup").style.display="none";
+}
+
+</script>
+
+<!-- Admission Popup Start -->
+
+<div id="adPopup" class="popup">
+
+<div class="popup-content">
+
+<span class="close-btn" onclick="closePopup()">×</span>
+
+<img src="C:\Users\MindTech Gyaan\Desktop\WEBSITE\Images\WhatsApp Image 2026-03-10 at 7.47.48 PM.jpeg" alt="Admission Open">
+
+</div>
+
+</div>
+
+<!-- Admission Popup End -->
+
+    <header id="header">
+        <div class="logo-container">
+		<img scr="C:\Users\MindTech Gyaan\Desktop\WEBSITE\Images\logo.jpeg" style="width:80px;">
+            <div class="logo-text">
+                <h1>GREENLAND INTERNATIONAL SCHOOL</h1>
+                <p>The Tradition Lives</p>
+            </div>
+        </div>
+        
+        <input type="checkbox" id="menu-toggle">
+        <label for="menu-toggle" class="hamburger"><i class="fas fa-bars"></i></label>
+        
+        <nav id="navbar">
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#management">Management</a></li>
+                <li><a href="#curriculum">Curriculum</a></li>
+                <li><a href="#admission">Admission</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="hero-overlay">
+            <div class="hero-content">
+                <h2>GREENLAND INTERNATIONAL SCHOOL</h2>
+                <p>A Hybrid, Affiliated English Medium C.B.S.E. School</p>
+                <a href="#admission" class="btn">Admission Open 2026–2027</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="section about">
+        <div class="container">
+            <h2 class="section-title">About the School</h2>
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="C:\Users\MindTech Gyaan\Desktop\WEBSITE\Images\WhatsApp Image 2026-03-10 at 7.47.40 PM.jpeg" alt="Greenland International School Building">
+                </div>
+                <div class="about-text">
+                    <p>Greenland International School is more than an ordinary school where students can find their definite future. Here we encourage students to explore their potential and achieve excellence in academics and life. Our state-of-the-art facilities and dedicated faculty ensure a nurturing environment for holistic development.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="management" class="section bg-light management">
+        <div class="container">
+            <h2 class="section-title">School Management</h2>
+            <div class="card-grid">
+                <div class="card management-card">
+                    <img src="C:\Users\MindTech Gyaan\Desktop\WEBSITE\Images\Screenshot 2026-03-10 223737.png" alt="Dr. Sameer Alam">
+                    <div class="card-content">
+                        <h3>Dr. Sameer Alam</h3>
+                        <p>Managing Director</p>
+                    </div>
+                </div>
+                <div class="card management-card">
+                    <img src="C:\Users\MindTech Gyaan\Desktop\WEBSITE\Images\Screenshot 2026-03-10 223909.png" alt="M.D. Amiruddin Ansari">
+                    <div class="card-content">
+                        <h3>M.D. Amiruddin Ansari</h3>
+                        <p>Chairman & Founder</p>
+                    </div>
+                </div>
+                <div class="card management-card">
+                    <img src="C:\Users\MindTech Gyaan\Desktop\WEBSITE\Images\Screenshot 2026-03-10 223802.png" alt="S.P. Ansari">
+                    <div class="card-content">
+                        <h3>S.P. Ansari</h3>
+                        <p>Chief Controller</p>
+                    </div>
+                </div>
+                <div class="card management-card">
+                    <img src="C:\Users\MindTech Gyaan\Desktop\WEBSITE\Images\Screenshot 2026-03-10 223817.png" alt="Salman Zawed">
+                    <div class="card-content">
+                        <h3>Salman Zawed</h3>
+                        <p>Assistant Director</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="curriculum" class="section curriculum">
+        <div class="container">
+            <h2 class="section-title">Curriculum Structure</h2>
+            <div class="card-grid">
+                <div class="card feature-card">
+                    <i class="fas fa-book-open"></i>
+                    <h3>CBSE Curriculum</h3>
+                    <p>Comprehensive education following Central Board of Secondary Education guidelines.</p>
+                </div>
+                <div class="card feature-card">
+                    <i class="fas fa-laptop-code"></i>
+                    <h3>NCERT Based Learning</h3>
+                    <p>Standardized study materials ensuring competitive exam readiness.</p>
+                </div>
+                <div class="card feature-card">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                    <h3>NEP 2020</h3>
+                    <p>Aligned with the New Education Policy focusing on skill-based education.</p>
+                </div>
+                <div class="card feature-card">
+                    <i class="fas fa-globe"></i>
+                    <h3>NCF 2023</h3>
+                    <p>Modern pedagogical approach based on the National Curriculum Framework.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="admission" class="section bg-gradient admission">
+        <div class="container text-center text-white">
+            <h2 class="section-title title-white">Admission Process</h2>
+            <p>Admission is granted through a formal registration process followed by a comprehensive entrance test to evaluate the student's aptitude and foundational knowledge.</p>
+            <br>
+            <a href="#contact" class="btn btn-light">Apply for Admission</a>
+        </div>
+    </section>
+
+    <section id="gallery" class="section gallery">
+        <div class="container">
+            <h2 class="section-title">School Gallery</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="C:\Users\MindTech Gyaan\Desktop\WEBSITE\Images\1 (1).jpeg" alt="Students studying">
+                    <div class="gallery-overlay"><span></span></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="C:\Users\MindTech Gyaan\Desktop\WEBSITE\Images\1 (9)1.jpeg" alt="Classroom learning">
+                    <div class="gallery-overlay"><span></span></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="C:\Users\MindTech Gyaan\Desktop\WEBSITE\Images\1 (7).jpeg" alt="School building">
+                    <div class="gallery-overlay"><span></span></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="C:\Users\MindTech Gyaan\Desktop\WEBSITE\Images\1 (11).jpeg" alt="Sports activities">
+                    <div class="gallery-overlay"><span></span></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="C:\Users\MindTech Gyaan\Desktop\WEBSITE\Images\1 (8).jpeg" alt="Teachers teaching">
+                    <div class="gallery-overlay"><span></span></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="C:\Users\MindTech Gyaan\Desktop\WEBSITE\Images\1 (4).jpeg" alt="School events">
+                    <div class="gallery-overlay"><span></span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section bg-light contact">
+        <div class="container">
+            <h2 class="section-title">Contact Us</h2>
+            <div class="contact-wrapper">
+                <div class="card contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Campus Address</h4>
+                            <p>Siraj Nagar, Pakriyar Purab Patti (Ahirauli-Tamkuhi Marg) Nagar Panchayat Seorahi Kushinagar (U.P.) 274406</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <div>
+                            <h4>Contact Numbers</h4>
+                            <p>+91 7880340188<br>+91 7880397588</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-globe"></i>
+                        <div>
+                            <h4>Website</h4>
+                            <p>www.glis.in</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-col brand-col">
+                <div class="footer-logo">
+                    <i class="fas fa-graduation-cap"></i> GREENLAND INT. SCHOOL
+                </div>
+                <p>"The Tradition Lives"</p>
+                <p>Empowering minds, shaping the future with value-based modern education.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#curriculum">Curriculum</a></li>
+                    <li><a href="#admission">Admission</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Connect With Us</h4>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Greenland International School. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
+
